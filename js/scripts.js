@@ -18,26 +18,28 @@ Contact.prototype.fullName = function() {
 // user interface logic
 $(document).ready(function() {
   $("#add-address").click(function() {
-    $("#new-addresses").append('<div class="new-address">' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-street">Street</label>' +
-                                   '<input type="text" class="form-control new-street">' +
+    $("#new-addresses").append('<div class="append-address">' +
+                                  '<div class="new-address">' +
+                                   '<div class="form-group">' +
+                                     '<label for="new-street">Street</label>' +
+                                     '<input type="text" class="form-control new-street">' +
+                                   '</div>' +
+                                   '<div class="form-group">' +
+                                     '<label for="new-city">City</label>' +
+                                     '<input type="text" class="form-control new-city">' +
+                                   '</div>' +
+                                   '<div class="form-group">' +
+                                     '<label for="new-state">State</label>' +
+                                     '<input type="text" class="form-control new-state">' +
+                                   '</div>' +
+                                   '<select class="form-control" id="address-type">' +
+                                     '<option value="Home">Home</option>' +
+                                     '<option value="Work">Work</option>' +
+                                     '<option value="Alternate Home">Alternate Home</option>' +
+                                     '<option value="PO Box">PO Box</option>' +
+                                     '<option value="Other">Other</option>' +
+                                   '</select>' +
                                  '</div>' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-city">City</label>' +
-                                   '<input type="text" class="form-control new-city">' +
-                                 '</div>' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-state">State</label>' +
-                                   '<input type="text" class="form-control new-state">' +
-                                 '</div>' +
-                                 '<select class="form-control" id="address-type">' +
-                                   '<option value="Home">Home</option>' +
-                                   '<option value="Work">Work</option>' +
-                                   '<option value="Alternate Home">Alternate Home</option>' +
-                                   '<option value="PO Box">PO Box</option>' +
-                                   '<option value="Other">Other</option>' +
-                                 '</select>' +
                                '</div>');
   });
   $("form#new-contact").submit(function(event) {
@@ -59,6 +61,8 @@ $(document).ready(function() {
       var newAddress = new Address(inputtedStreet, inputtedCity, inputtedState, addressType);
       newContact.addresses.push(newAddress);
     });
+
+    $(".append-address").remove();
 
     $(".contact").last().click(function() {
       $("#show-contact").show();
